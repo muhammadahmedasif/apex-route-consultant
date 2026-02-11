@@ -23,7 +23,8 @@ const Contact: React.FC = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/api/send-email', {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -238,7 +239,7 @@ const Contact: React.FC = () => {
       <div className="w-full h-[400px] lg:h-[500px] relative z-10 animate-fade-in-up delay-300">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.515977300161!2d74.33748487508437!3d31.50998557421876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919059623345ae5%3A0x7437adfded9371e8!2sApex%20Route!5e0!3m2!1sen!2s!4v1770745165022!5m2!1sen!2s"
-          className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+          className="w-full h-full transition-all duration-700"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"

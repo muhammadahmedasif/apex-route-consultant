@@ -32,11 +32,11 @@ const Navbar: React.FC = () => {
           className="flex items-center gap-3 group animate-fade-in shrink-0"
         >
           {/* Logo */}
-          <div className="flex items-center justify-center rounded-full">
+          <div className="flex items-center justify-center rounded-full bg-navy-900">
             <img
-              src="\images\apex route.png"
+              src="/images/logo.jpeg"
               alt="Apex Route Logo"
-              className="h-11 w-11 rounded-full object-cover bg-white shadow-md transition-transform duration-300 group-hover:scale-105"
+              className="h-12 w-12 rounded-full object-cover shadow-sm transition-transform duration-300 group-hover:scale-105 bg-navy-900"
             />
           </div>
 

@@ -2,9 +2,14 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -154,6 +159,15 @@ app.post('/api/send-email', async (req, res) => {
     console.error('Email sending failed:', error);
     res.status(500).json({ success: false, message: 'Failed to send emails', error: error.toString() });
   }
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
